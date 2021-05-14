@@ -1,4 +1,5 @@
 ССЫЛКА НА ПАПКУ С ПРОЕКТОМ: https://drive.google.com/drive/u/1/folders/148aRqykcZvFC-0S_8svow7aszaHE2wAF
+ССЫЛКА НА ТАБЛИЦУ: https://docs.google.com/spreadsheets/d/1fE_QFmx20-Ev21Al04JsqnTcwwQ-zyfcfb84L3vg72E/edit#gid=0
 
 # Автоцензор
 
