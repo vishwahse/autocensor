@@ -1,5 +1,4 @@
 import re
-from pprint import pprint
 
 #код, который подключает данные из таблицы к консоли
 from googleapiclient.discovery import build
@@ -25,13 +24,9 @@ result2 = sheet.values().get(spreadsheetId = SPREADSHEET_ID,
 
 values1 = result1['values']
 dirty = [item for sublist in values1 for item in sublist]
-#print(dirty)
 
 values2 = result2['values']
 clean = [item for sublist in values2 for item in sublist]
-#print(clean)
-
-#вывод необработанных данных
 
 
 def check(i):
@@ -54,7 +49,6 @@ def check(i):
                     state = False
             if state == False:
                 print("Ваше сообщение было отправлено на рассмотрение модератору.")
-            #тут мы говорим о том что модератора никакого нет на самом деле и типа да у нас проект как бы в консоли только
     return state
 def print_message(chat):
     state = True
@@ -72,3 +66,4 @@ if print_message(message) == True:
     moderator = input("Помогите нам развить нашу программу. Считаете ли Вы, что в Вашем сообщении присутствует какая-либо ненормативная лексика? Если да, пожалуйста, введите в поле слово 'clean'. Если нет, пожалуйста, введите в поле вызвавшее сомнения слово.")
     if moderator != 'clean':
         print("Спасибо! Ваше сообщение было отправлено на рассмотрение модератору.")
+a = input("Введите любую последовательность символов чтобы выйти: ")
