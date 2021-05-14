@@ -1,3 +1,5 @@
+ССЫЛКА НА ПАПКУ С ПРОЕКТОМ: https://drive.google.com/drive/u/1/folders/148aRqykcZvFC-0S_8svow7aszaHE2wAF
+
 # Автоцензор
 
 ## Подробное описание
