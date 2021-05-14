@@ -42,7 +42,7 @@ def check(i):
         for j in dirty:
             e = re.findall(j, a)
             if e != []:
-                print("Ваше сообщение было зацензурено")
+                print("Ваше сообщение было заблокировано.")
                 state = False
         if state == True:
             for h in clean:
@@ -53,7 +53,7 @@ def check(i):
                 else:
                     state = False
             if state == False:
-                print("Ваше сообщение было отправлено на рассмотрение модератору")
+                print("Ваше сообщение было отправлено на рассмотрение модератору.")
             #тут мы говорим о том что модератора никакого нет на самом деле и типа да у нас проект как бы в консоли только
     return state
 def print_message(chat):
@@ -65,6 +65,10 @@ def print_message(chat):
             state = False
             break
     if state == True:
-        print("С вашим сообщением все хорошо!")
+        print(chat)
+        return True
 message = input("Введите свое сообщение: ")
-print_message(message)
+if print_message(message) == True:
+    moderator = input("Помогите нам развить нашу программу. Считаете ли Вы, что в Вашем сообщении присутствует какая-либо ненормативная лексика? Если да, пожалуйста, введите в поле слово 'clean'. Если нет, пожалуйста, введите в поле вызвавшее сомнения слово.")
+    if moderator != 'clean':
+        print("Спасибо! Ваше сообщение было отправлено на рассмотрение модератору.")
