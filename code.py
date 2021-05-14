@@ -18,10 +18,10 @@ service = build('sheets', 'v4', credentials = creds)
 
 sheet = service.spreadsheets()
 result1 = sheet.values().get(spreadsheetId = SPREADSHEET_ID,
-                           range = "A2:A392").execute()
+                           range = "A2:A55").execute()
 
 result2 = sheet.values().get(spreadsheetId = SPREADSHEET_ID,
-                           range = "B2:B392").execute()
+                           range = "B2:D50").execute()
 
 values1 = result1['values']
 dirty = [item for sublist in values1 for item in sublist]
@@ -35,23 +35,30 @@ clean = [item for sublist in values2 for item in sublist]
 
 
 def check(i):
-    a = re.match('[[ЁёА-Яа-я]*([Ее][Бб]|[Ёё][Бб]|[Бб][Лл][Яя][ТтДд]?|[Хх][Уу][еёйяюлЕЁЙЯЮЛ]|[пП][иИ][зЗ][дД])[ЁёА-Яа-я]*', i)
+    a = re.match('[[ЁёА-Яа-я\!\"\'\,\-\.\\\:\;\?]*([Ее][Бб]|[Ёё][Бб]|[Бб][Лл][Яя][ТтДд]?|[Хх][Уу][еёйяюлЕЁЙЯЮЛ]|[пП][иИ][зЗ][дД])[ЁёА-Яа-я\!\"\'\,\-\.\\\:\;\?]*', i)
     state = True
     if a != None:
         a = a.group(0)
-        if a in dirty:
-            print("Ваше сообщение было зацензурено")
-            state = False
-        elif a in clean:
-            state = True
-        else:
-            print("Ваше сообщение было отправлено на рассмотрение модератору")
-            state = False
+        for j in dirty:
+            e = re.findall(j, a)
+            if e != []:
+                print("Ваше сообщение было зацензурено")
+                state = False
+        if state == True:
+            for h in clean:
+                f = re.findall(h, a)
+                if f != []:
+                    state = True
+                    break
+                else:
+                    state = False
+            if state == False:
+                print("Ваше сообщение было отправлено на рассмотрение модератору")
             #тут мы говорим о том что модератора никакого нет на самом деле и типа да у нас проект как бы в консоли только
     return state
-def print_message(message):
+def print_message(chat):
     state = True
-    for i in message.split(" "):
+    for i in chat.split(" "):
         if check(i) == True:
             continue
         else:
