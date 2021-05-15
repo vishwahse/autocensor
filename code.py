@@ -17,10 +17,10 @@ service = build('sheets', 'v4', credentials = creds)
 
 sheet = service.spreadsheets()
 result1 = sheet.values().get(spreadsheetId = SPREADSHEET_ID,
-                           range = "A2:A55").execute()
+                           range = "A2:A100").execute()
 
 result2 = sheet.values().get(spreadsheetId = SPREADSHEET_ID,
-                           range = "B2:D50").execute()
+                           range = "B2:B100").execute()
 
 values1 = result1['values']
 dirty = [item for sublist in values1 for item in sublist]
